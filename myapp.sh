@@ -1,4 +1,12 @@
-#!/bin/zsh
+#!/bin/bash
+
+# Check the user's shell
+user_shell="$SHELL"
+
+if [ "$user_shell" = "/bin/zsh" ]; then
+  # Switch to Zsh
+  exec zsh "$0" "$@"
+fi
 
 # For AMD64 / x86_64
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-$(uname)-amd64
